@@ -17,6 +17,7 @@ function Home() {
       name: "Коровий навоз 3 куб.м",
       price: "3000₽",
       unit: "за 3 куб.м",
+      volume: 3,
       description: "Качественный перепревший коровий навоз для небольшого участка",
       features: [
         "Органический",
@@ -29,6 +30,7 @@ function Home() {
       name: "Коровий навоз 5 куб.м",
       price: "4500₽",
       unit: "за 5 куб.м",
+      volume: 5,
       description: "Оптимальный объем перепревшего навоза для стандартного огорода",
       features: [
         "Органический",
@@ -41,6 +43,7 @@ function Home() {
       name: "Коровий навоз 10 куб.м",
       price: "9000₽",
       unit: "за 10 куб.м",
+      volume: 10,
       description: "Выгодное предложение навоза оптом для больших садов и ферм",
       features: [
         "Органический",
@@ -54,9 +57,7 @@ function Home() {
   return (
     <>
       <Head>
-        <title>
-          Купить коровий навоз в Ижевске с доставкой — цены от 3000₽
-        </title>
+        <title>Купить коровий навоз в Ижевске с доставкой — цены от 3000₽</title>
         <meta
           name="description"
           content="Продажа качественного перепревшего коровьего навоза в Ижевске. Доставка самосвалом по городу и пригороду. Честный объем, низкие цены от производителя."
@@ -151,6 +152,13 @@ function Home() {
             Натуральное перепревшее удобрение для вашего урожая. Честные объемы,
             доставка самосвалом и цены от производителя.
           </p>
+          <div className="mt-8">
+            <Link to="/#products">
+              <Button size="lg" className="bg-green-700 hover:bg-green-800 text-lg px-8">
+                Смотреть все продукты
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -166,51 +174,58 @@ function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {products.map((product, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <div className="aspect-video overflow-hidden rounded-t-lg">
-                  <img
-                    fetchPriority={index === 0 ? "high" : "auto"}
-                    src={product.image}
-                    alt={`Доставка навоза ${product.name} Ижевск`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <CardHeader className="pb-3">
-                  {/* CardTitle обычно рендерится как H3 в shadcn/ui (или div, который можно стилизовать). 
-                      Если это div, стоит убедиться, что он семантически значим. 
-                      Здесь названия стали уникальными. */}
-                  <CardTitle className="text-lg sm:text-xl">
-                    {product.name}
-                  </CardTitle>
-                  <CardDescription className="text-sm">
-                    {product.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-1 sm:gap-2 mb-4">
-                    {product.features.map((feature, idx) => (
-                      <Badge
-                        key={idx}
-                        variant="secondary"
-                        className="bg-green-100 text-green-800 text-xs"
-                      >
-                        {feature}
-                      </Badge>
-                    ))}
+              <Link key={index} to={`/product/cow-manure?volume=${product.volume}`}>
+                <Card className="hover:shadow-lg transition-shadow h-full cursor-pointer">
+                  <div className="aspect-video overflow-hidden rounded-t-lg">
+                    <img
+                      fetchPriority={index === 0 ? "high" : "auto"}
+                      src={product.image}
+                      alt={`Доставка навоза ${product.name} Ижевск`}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="text-xl sm:text-2xl font-bold text-green-700">
-                        {product.price}
-                      </span>
-                      <span className="text-gray-500 ml-1 text-sm">
-                        {product.unit}
-                      </span>
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg sm:text-xl">
+                      {product.name}
+                    </CardTitle>
+                    <CardDescription className="text-sm">
+                      {product.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-1 sm:gap-2 mb-4">
+                      {product.features.map((feature, idx) => (
+                        <Badge
+                          key={idx}
+                          variant="secondary"
+                          className="bg-green-100 text-green-800 text-xs"
+                        >
+                          {feature}
+                        </Badge>
+                      ))}
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <span className="text-xl sm:text-2xl font-bold text-green-700">
+                          {product.price}
+                        </span>
+                        <span className="text-gray-500 ml-1 text-sm">
+                          {product.unit}
+                        </span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Link to="/#products">
+              <Button variant="outline" size="lg" className="text-green-700 border-green-700 hover:bg-green-50">
+                Перейти в каталог
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -324,6 +339,6 @@ function Home() {
       </section>
     </>
   );
-};
+}
 
 export default Home;
