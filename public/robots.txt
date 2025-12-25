@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /contacts
+
+Sitemap: http://navoz18.ru/sitemap.xml
