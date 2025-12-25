@@ -219,15 +219,6 @@ function Home() {
               </Link>
             ))}
           </div>
-
-          <div className="mt-12 text-center">
-            <Link to="/#products">
-              <Button variant="outline" size="lg" className="text-green-700 border-green-700 hover:bg-green-50">
-                Перейти в каталог
-              </Button>
-            </Link>
-          </div>
-        </div>
       </section>
 
       {/* Benefits Section */}
