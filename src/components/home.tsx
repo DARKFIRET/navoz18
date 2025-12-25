@@ -219,6 +219,8 @@ function Home() {
               </Link>
             ))}
           </div>
+        </div>
+          
       </section>
 
       {/* Benefits Section */}
