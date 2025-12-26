@@ -3,4 +3,4 @@ Allow: /
 Allow: /about
 Allow: /contacts
 
-Sitemap: http://navoz18.ru/sitemap.xml
+Sitemap: https://navoz18.ru/sitemap.xml
