@@ -153,11 +153,6 @@ function Home() {
             доставка самосвалом и цены от производителя.
           </p>
           <div className="mt-8">
-            <Link to="/#products">
-              <Button size="lg" className="bg-green-700 hover:bg-green-800 text-lg px-8">
-                Смотреть все продукты
-              </Button>
-            </Link>
           </div>
         </div>
       </section>

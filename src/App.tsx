@@ -5,26 +5,26 @@ import Layout from "./Layout";
 
 export const routes: RouteRecord[] = [
   {
-    path: '/',
+    path: "/",
     element: <Layout />,
-    entry: 'src/Layout.tsx',
+    entry: "src/Layout.tsx",
     children: [
       {
         index: true,
-        Component: React.lazy(() => import('./components/home')),
+        Component: React.lazy(() => import("./components/home")),
       },
       {
-        path: '/about',
-        Component: React.lazy(() => import('./components/about')),
+        path: "/about",
+        Component: React.lazy(() => import("./components/about")),
       },
       {
-        path: '/contacts',
-        Component: React.lazy(() => import('./components/contacts')),
+        path: "/contacts",
+        Component: React.lazy(() => import("./components/contacts")),
       },
       {
-        path: '/product/:slug',
-        Component: React.lazy(() => import('./components/product')),
+        path: "/product/:slug",
+        Component: React.lazy(() => import("./components/product")),
       },
     ],
   },
-]
+];
