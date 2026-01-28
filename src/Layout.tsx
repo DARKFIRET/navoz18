@@ -1,35 +1,40 @@
-import { Suspense, useEffect } from 'react'
+import { Suspense, useCallback } from 'react'
 import { Outlet } from 'react-router-dom'
 import { Head } from 'vite-react-ssg'
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import CookieConsent from "./components/CookieConsent";
+
+function initYandexMetrika() {
+    // Yandex.Metrika
+    (function (m: any, e: Document, t: string, r: string, i: string) {
+        m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+        m[i].l = 1 * (new Date() as any);
+        for (let j = 0; j < e.scripts.length; j++) {
+            if (e.scripts[j].src === r) { return; }
+        }
+        const k = e.createElement(t) as HTMLScriptElement;
+        const a = e.getElementsByTagName(t)[0];
+        k.async = true;
+        k.src = r;
+        a.parentNode?.insertBefore(k, a);
+    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=106471821', 'ym');
+
+    (window as any).ym(106471821, 'init', {
+        ssr: true,
+        webvisor: true,
+        clickmap: true,
+        ecommerce: "dataLayer",
+        referrer: document.referrer,
+        url: location.href,
+        accurateTrackBounce: true,
+        trackLinks: true
+    });
+}
 
 export default function Layout() {
-    useEffect(() => {
-        // Yandex.Metrika
-        (function (m: any, e: Document, t: string, r: string, i: string) {
-            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
-            m[i].l = 1 * (new Date() as any);
-            for (let j = 0; j < e.scripts.length; j++) {
-                if (e.scripts[j].src === r) { return; }
-            }
-            const k = e.createElement(t) as HTMLScriptElement;
-            const a = e.getElementsByTagName(t)[0];
-            k.async = true;
-            k.src = r;
-            a.parentNode?.insertBefore(k, a);
-        })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=106471821', 'ym');
-
-        (window as any).ym(106471821, 'init', {
-            ssr: true,
-            webvisor: true,
-            clickmap: true,
-            ecommerce: "dataLayer",
-            referrer: document.referrer,
-            url: location.href,
-            accurateTrackBounce: true,
-            trackLinks: true
-        });
+    const handleCookieAccept = useCallback(() => {
+        initYandexMetrika();
     }, []);
 
     return (
@@ -58,6 +63,7 @@ export default function Layout() {
 
                 <Footer />
             </div>
+            <CookieConsent onAccept={handleCookieAccept} />
             <noscript>
                 <div>
                     <img src="https://mc.yandex.ru/watch/106471821" style={{ position: 'absolute', left: '-9999px' }} alt="" />
