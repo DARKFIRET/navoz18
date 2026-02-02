@@ -58,6 +58,7 @@ function Home() {
     <>
       <Head>
         <title>Купить коровий навоз в Ижевске с доставкой — цены от 3000₽</title>
+        <link rel="preload" as="image" href="/cow.avif" type="image/avif" />
         <meta
           name="description"
           content="Продажа качественного перепревшего коровьего навоза в Ижевске. Доставка самосвалом по городу и пригороду. Честный объем, низкие цены от производителя."
@@ -173,7 +174,7 @@ function Home() {
                 <Card className="hover:shadow-lg transition-shadow h-full cursor-pointer">
                   <div className="aspect-video overflow-hidden rounded-t-lg">
                     <img
-                      loading="lazy"
+                      loading={index === 0 ? "eager" : "lazy"}
                       fetchPriority={index === 0 ? "high" : "auto"}
                       src={product.image}
                       alt={`Доставка навоза ${product.name} Ижевск`}
