@@ -2,5 +2,10 @@ User-agent: *
 Allow: /
 Allow: /about
 Allow: /contacts
+Allow: /products
+Allow: /products/cow-manure
+Allow: /products/cow-manure?volume=3
+Allow: /products/cow-manure?volume=5
+Allow: /products/cow-manure?volume=10
 
 Sitemap: https://navoz18.ru/sitemap.xml

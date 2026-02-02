@@ -1,11 +1,15 @@
 {
     "functions": {
-        "robots.js": {
+        "api/robots.js": {
             "memory": 128,
             "maxDuration": 10
         }
     },
     "rewrites": [
+        {
+            "source": "/robots.txt",
+            "destination": "/api/robots"
+        },
         {
             "source": "/((?!api|robots.txt|sitemap.xml|static|.*\\..*).*)",
             "destination": "/index.html"
