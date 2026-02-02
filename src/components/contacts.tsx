@@ -1,8 +1,18 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Head } from "vite-react-ssg";
+import { useState, useEffect } from "react";
 
 function Contacts() {
+  const [cookieConsent, setCookieConsent] = useState<string | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+    const consent = localStorage.getItem('cookieConsent');
+    setCookieConsent(consent);
+  }, []);
+
   return (
     <>
       <Head>
@@ -162,12 +172,24 @@ function Contacts() {
                 <div className="max-w-4xl mx-auto text-center">
                   <div className="bg-white p-6 sm:p-8 rounded-lg shadow-lg">
                     <div className="aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
-                      <iframe
-                        src="https://yandex.ru/map-widget/v1/?um=constructor%3Ac6e69f0f26f84f7c04ffa6309c18f1e52e6c32232b0f51f9371beed151407035&amp;source=constructor"
-                        width="100%"
-                        height="100%"
-                        frameBorder="0"
-                      ></iframe>
+                      {isMounted && cookieConsent === 'accepted' ? (
+                        <iframe
+                          src="https://yandex.ru/map-widget/v1/?um=constructor%3Ac6e69f0f26f84f7c04ffa6309c18f1e52e6c32232b0f51f9371beed151407035&amp;source=constructor"
+                          width="100%"
+                          height="100%"
+                          frameBorder="0"
+                          title="Яндекс Карта"
+                        ></iframe>
+                      ) : (
+                        <div className="text-center p-8">
+                          <p className="text-gray-600 mb-4">
+                            🗺️ Для отображения карты необходимо принять использование cookies
+                          </p>
+                          <p className="text-sm text-gray-500">
+                            Яндекс.Карты используют cookies для корректной работы
+                          </p>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

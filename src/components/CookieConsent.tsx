@@ -22,6 +22,8 @@ function CookieConsent({ onAccept }: CookieConsentProps) {
         localStorage.setItem('cookieConsent', 'accepted');
         setIsVisible(false);
         onAccept();
+        // Reload page to update SSG content (e.g., maps)
+        window.location.reload();
     };
 
     const handleDecline = () => {
