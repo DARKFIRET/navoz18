@@ -175,7 +175,7 @@ function Home() {
                   <div className="aspect-video overflow-hidden rounded-t-lg">
                     <img
                       loading={index === 0 ? "eager" : "lazy"}
-                      fetchPriority={index === 0 ? "high" : "auto"}
+                      fetchPriority="high"
                       src={product.image}
                       alt={`Доставка навоза ${product.name} Ижевск`}
                       className="w-full h-full object-cover"
