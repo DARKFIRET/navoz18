@@ -12,7 +12,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    tempo(),
+    ...(process.env.NODE_ENV === 'development' ? [tempo()] : []),
     svgr()
   ],
   resolve: {
