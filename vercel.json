@@ -1,4 +1,10 @@
 {
+    "functions": {
+        "robots.js": {
+            "memory": 128,
+            "maxDuration": 10
+        }
+    },
     "rewrites": [
         {
             "source": "/((?!api|robots.txt|sitemap.xml|static|.*\\..*).*)",
