@@ -25,6 +25,10 @@ export const routes: RouteRecord[] = [
         path: "/product/:slug",
         Component: React.lazy(() => import("./components/product")),
       },
+      {
+        path: "*",
+        Component: React.lazy(() => import("./components/NotFound")),
+      },
     ],
   },
 ];
