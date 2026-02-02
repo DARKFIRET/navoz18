@@ -6,8 +6,10 @@ interface CookieConsentProps {
 
 function CookieConsent({ onAccept }: CookieConsentProps) {
     const [isVisible, setIsVisible] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
+        setIsMounted(true);
         const consent = localStorage.getItem('cookieConsent');
         if (consent === null) {
             setIsVisible(true);
@@ -27,7 +29,7 @@ function CookieConsent({ onAccept }: CookieConsentProps) {
         setIsVisible(false);
     };
 
-    if (!isVisible) return null;
+    if (!isMounted || !isVisible) return null;
 
     return (
         <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-gray-900/95 backdrop-blur-sm border-t border-gray-700 shadow-lg">

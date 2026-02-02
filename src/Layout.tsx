@@ -56,7 +56,7 @@ export default function Layout() {
                 <Header />
 
                 <main className="flex-1">
-                    <Suspense>
+                    <Suspense fallback={<div />}>
                         <Outlet />
                     </Suspense>
                 </main>
