@@ -182,10 +182,10 @@ function Contacts() {
                         ></iframe>
                       ) : (
                         <div className="text-center p-8">
-                          <p className="text-gray-600 mb-4">
+                          <p className="text-black-600 mb-4">
                             🗺️ Для отображения карты необходимо принять использование cookies
                           </p>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-sm text-black-500">
                             Яндекс.Карты используют cookies для корректной работы
                           </p>
                         </div>
