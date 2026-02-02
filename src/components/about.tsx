@@ -82,7 +82,9 @@ function About() {
               </div>
               <div className="order-1 lg:order-2">
                 <img
-                  loading="lazy"
+                  width="100%"
+                  height="auto"
+                  fetchPriority="high"
                   src={"/dirt.avif"}
                   alt="Наша ферма"
                   className="rounded-lg shadow-lg w-full"
