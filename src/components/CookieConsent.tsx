@@ -36,7 +36,7 @@ function CookieConsent({ onAccept }: CookieConsentProps) {
                     <p className="mb-1">
                         🍪 Мы используем cookies для улучшения работы сайта и анализа посещаемости.
                     </p>
-                    <p className="text-gray-400 text-xs sm:text-sm">
+                    <p className="text-gray-300 text-xs sm:text-sm">
                         Нажимая «Принять», вы соглашаетесь с использованием cookies.
                     </p>
                 </div>
@@ -49,7 +49,7 @@ function CookieConsent({ onAccept }: CookieConsentProps) {
                     </button>
                     <button
                         onClick={handleAccept}
-                        className="px-6 py-2 text-sm bg-green-600 hover:bg-green-500 text-white rounded-lg font-medium transition-colors"
+                        className="px-6 py-2 text-sm bg-green-700 hover:bg-green-600 text-white rounded-lg font-medium transition-colors"
                     >
                         Принять
                     </button>
