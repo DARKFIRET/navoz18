@@ -173,6 +173,7 @@ function Home() {
                 <Card className="hover:shadow-lg transition-shadow h-full cursor-pointer">
                   <div className="aspect-video overflow-hidden rounded-t-lg">
                     <img
+                      loading="lazy"
                       fetchPriority={index === 0 ? "high" : "auto"}
                       src={product.image}
                       alt={`Доставка навоза ${product.name} Ижевск`}
@@ -215,7 +216,7 @@ function Home() {
             ))}
           </div>
         </div>
-          
+
       </section>
 
       {/* Benefits Section */}
